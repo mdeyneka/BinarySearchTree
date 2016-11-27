@@ -18,21 +18,19 @@ private:
     V value;
 public:
     node_ptr<K,V> left, right;
-    Node(K key, V value);
+    Node(const K &key, const V &value);
     ~Node();
-    void setKey(K key);
-    K getKey();
-    void setValue(V value);
-    V getValue();
+    void setKey(const K &key);
+    const K& getKey() const;
+    void setValue(const V &value);
+    const V& getValue() const;
     bool operator > (const Node<K,V>& node) const;
     bool operator == (const Node<K,V>& node) const;
 };
 
 template<typename K, typename V>
-Node<K,V>::Node(K key, V value)
+Node<K,V>::Node(const K &key, const V &value) : key(key), value(value)
 {
-    this->key = key;
-    this->value = value;
     this->left = nullptr;
     this->right = nullptr;
 }
@@ -44,25 +42,25 @@ Node<K,V>::~Node()
 }
 
 template<typename K, typename V>
-void Node<K,V>::setKey(K key)
+void Node<K,V>::setKey(const K &key)
 {
     this->key = key;
 }
 
 template<typename K, typename V>
-K Node<K,V>::getKey()
+const K& Node<K,V>::getKey() const
 {
     return key;
 }
 
 template<typename K, typename V>
-void Node<K,V>::setValue(V value)
+void Node<K,V>::setValue(const V &value)
 {
     this->value = value;
 }
 
 template<typename K, typename V>
-V Node<K,V>::getValue()
+const V& Node<K,V>::getValue() const
 {
     return value;
 }

@@ -15,13 +15,13 @@ private:
     node_ptr<K,V> root;
 public:
     BinarySearchTree<K,V>();
-    void add(K key, V value);
-    bool hasKey(K key);
-    V get(K key);
-    void remove(K key);
-    int size();
-    V minValue();
-    V maxValue();
+    void add(const K &key, const V &value);
+    bool hasKey(const K &key) const;
+    const V& get(const K &key) const;
+    void remove(const K &key);
+    int size() const;
+    const V& minValue() const;
+    const V& maxValue() const;
 };
 
 template<typename K, typename V>
@@ -30,7 +30,7 @@ BinarySearchTree<K,V>::BinarySearchTree(){
 }
 
 template<typename K, typename V>
-void BinarySearchTree<K,V>::add(K key, V value)
+void BinarySearchTree<K,V>::add(const K &key, const V &value)
 {
     node_ptr<K,V> x = root, y = nullptr;
 
@@ -66,7 +66,7 @@ void BinarySearchTree<K,V>::add(K key, V value)
 }
 
 template<typename K, typename V>
-bool BinarySearchTree<K,V>::hasKey(K key)
+bool BinarySearchTree<K,V>::hasKey(const K &key) const
 {
     node_ptr<K,V> x = root;
     while(x != nullptr)
@@ -87,7 +87,7 @@ bool BinarySearchTree<K,V>::hasKey(K key)
 }
 
 template<typename K, typename V>
-V BinarySearchTree<K,V>::get(K key)
+const V& BinarySearchTree<K,V>::get(const K &key) const
 {
     node_ptr<K,V> x = root;
     while(x != nullptr)
@@ -108,7 +108,7 @@ V BinarySearchTree<K,V>::get(K key)
 }
 
 template<typename K, typename V>
-void BinarySearchTree<K,V>::remove(K key)
+void BinarySearchTree<K,V>::remove(const K &key)
 {
     node_ptr<K,V> x = root, y = nullptr;
 
@@ -164,7 +164,7 @@ void BinarySearchTree<K,V>::remove(K key)
 }
 
 template<typename K, typename V>
-int BinarySearchTree<K,V>::size()
+int BinarySearchTree<K,V>::size() const
 {
     int count = 0;
     if(root == nullptr) return 0;
@@ -185,7 +185,7 @@ int BinarySearchTree<K,V>::size()
 }
 
 template<typename K, typename V>
-V BinarySearchTree<K,V>::minValue()
+const V& BinarySearchTree<K,V>::minValue() const
 {
     node_ptr<K,V> current_node = root;
     while(current_node->left != nullptr)
@@ -196,7 +196,7 @@ V BinarySearchTree<K,V>::minValue()
 }
 
 template<typename K, typename V>
-V BinarySearchTree<K,V>::maxValue()
+const V& BinarySearchTree<K,V>::maxValue() const
 {
     node_ptr<K,V> current_node = root;
     while(current_node->right != nullptr)
